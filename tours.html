@@ -14,6 +14,7 @@
   <meta property="og:title" content="Tours — Summit Trail Outfitters">
   <meta property="og:description" content="Day hikes and full-day adventures in the Pacific Northwest.">
   <meta property="og:type" content="website">
+  <script src="scripts/main.js" defer></script>
 </head>
 
 <body>
@@ -21,6 +22,11 @@
     <header class="site-header">
         <div class="content-wrapper header-inner">
             <a href="index.html" class="site-logo">Summit Trail Outfitters</a>
+            <button class="hamburger-btn" aria-expanded="false" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
             <nav class="site-nav" aria-label="Main navigation">
                 <ul class="nav-links">
                     <li><a href="index.html">Home</a></li>
@@ -45,9 +51,18 @@
         <section class="tours-page-content">
             <div class="content-wrapper">
 
+                <div class="filter-buttons">
+                    <button class="filter-btn active" data-category="all">All</button>
+                    <button class="filter-btn" data-category="hiking">Hiking</button>
+                    <button class="filter-btn" data-category="walking">Walking</button>
+                </div>
+
                 <h2>Day Hikes</h2>
                 <div class="tours-grid">
-                    <article class="tour-card">
+                    <article class="tour-card" data-category="hiking">
+                        <div class="tour-card-image-wrap">
+                            <img class="tour-card-image" src="images/pine-ridge-loop.jpg" alt="Forested trail through cedar and fir trees on the Pine Ridge Loop">
+                        </div>
                         <div class="tour-card-body">
                             <h3 class="tour-card-title">Pine Ridge Loop</h3>
                             <div class="tour-tags">
@@ -62,11 +77,15 @@
                                     <span class="tour-price-label">per person</span>
                                 </div>
                                 <a href="contact.html" class="btn btn-primary">Book this tour</a>
+                                <button class="btn-add-favorite">Add to Favorites</button>
                             </div>
                         </div>
                     </article>
 
-                    <article class="tour-card">
+                    <article class="tour-card" data-category="hiking">
+                        <div class="tour-card-image-wrap">
+                            <img class="tour-card-image" src="images/river-canyon-trail.jpg" alt="Waterfall cascading through a lush forest canyon on the River Canyon Trail">
+                        </div>
                         <div class="tour-card-body">
                             <h3 class="tour-card-title">River Canyon Trail</h3>
                             <div class="tour-tags">
@@ -81,6 +100,7 @@
                                     <span class="tour-price-label">per person</span>
                                 </div>
                                 <a href="contact.html" class="btn btn-primary">Book this tour</a>
+                                <button class="btn-add-favorite">Add to Favorites</button>
                             </div>
                         </div>
                     </article>
@@ -88,7 +108,10 @@
 
                 <h2>Full-Day Adventures</h2>
                 <div class="tours-grid">
-                    <article class="tour-card">
+                    <article class="tour-card" data-category="hiking">
+                        <div class="tour-card-image-wrap">
+                            <img class="tour-card-image" src="images/summit-challenge.jpg" alt="Panoramic view from a high mountain ridge on the Summit Challenge">
+                        </div>
                         <div class="tour-card-body">
                             <h3 class="tour-card-title">Summit Challenge</h3>
                             <div class="tour-tags">
@@ -103,11 +126,15 @@
                                     <span class="tour-price-label">per person</span>
                                 </div>
                                 <a href="contact.html" class="btn btn-primary">Book this tour</a>
+                                <button class="btn-add-favorite">Add to Favorites</button>
                             </div>
                         </div>
                     </article>
 
-                    <article class="tour-card">
+                    <article class="tour-card" data-category="hiking">
+                        <div class="tour-card-image-wrap">
+                            <img class="tour-card-image" src="images/wildflower-traverse.jpg" alt="Wildflowers blooming across a high mountain meadow on the Wildflower Traverse">
+                        </div>
                         <div class="tour-card-body">
                             <h3 class="tour-card-title">Wildflower Traverse</h3>
                             <div class="tour-tags">
@@ -122,6 +149,7 @@
                                     <span class="tour-price-label">per person</span>
                                 </div>
                                 <a href="contact.html" class="btn btn-primary">Book this tour</a>
+                                <button class="btn-add-favorite">Add to Favorites</button>
                             </div>
                         </div>
                     </article>
@@ -129,7 +157,10 @@
 
                 <h2>Overnight Trips</h2>
                 <div class="tours-grid">
-                    <article class="tour-card">
+                    <article class="tour-card" data-category="hiking">
+                        <div class="tour-card-image-wrap">
+                            <img class="tour-card-image" src="images/alpine-lake-basecamp.jpg" alt="Mountain peaks reflected in a calm alpine lake at the Alpine Lake Basecamp">
+                        </div>
                         <div class="tour-card-body">
                             <h3 class="tour-card-title">Alpine Lake Basecamp</h3>
                             <div class="tour-tags">
@@ -144,11 +175,15 @@
                                     <span class="tour-price-label">per person</span>
                                 </div>
                                 <a href="contact.html" class="btn btn-primary">Book this tour</a>
+                                <button class="btn-add-favorite">Add to Favorites</button>
                             </div>
                         </div>
                     </article>
 
-                    <article class="tour-card">
+                    <article class="tour-card" data-category="hiking">
+                        <div class="tour-card-image-wrap">
+                            <img class="tour-card-image" src="images/ridgeline-traverse.jpg" alt="Hiker on an exposed mountain ridgeline on the Ridgeline Traverse">
+                        </div>
                         <div class="tour-card-body">
                             <h3 class="tour-card-title">Ridgeline Traverse</h3>
                             <div class="tour-tags">
@@ -163,11 +198,19 @@
                                     <span class="tour-price-label">per person</span>
                                 </div>
                                 <a href="contact.html" class="btn btn-primary">Book this tour</a>
+                                <button class="btn-add-favorite">Add to Favorites</button>
                             </div>
                         </div>
                     </article>
                 </div>
 
+            </div>
+        </section>
+
+        <section class="favorites-section section-padding">
+            <div class="content-wrapper">
+                <h2>Your Saved Tours</h2>
+                <ul class="favorites-list"></ul>
             </div>
         </section>
 

@@ -2,18 +2,19 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Summit Trail Outfitters — Guided Hiking Tours in the Pacific Northwest</title>
-  <meta name="description" content="Summit Trail Outfitters leads small-group guided hiking tours through the most spectacular trails in the Pacific Northwest. Book your adventure today.">
-  <link rel="icon" href="favicon.ico" type="image/x-icon">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
-  <meta property="og:title" content="Summit Trail Outfitters — Guided Hiking Tours">
-  <meta property="og:description" content="Small-group guided hiking adventures across the Pacific Northwest.">
-  <meta property="og:type" content="website">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Summit Trail Outfitters — Guided Hiking Tours in the Pacific Northwest</title>
+    <meta name="description" content="Summit Trail Outfitters leads small-group guided hiking tours through the most spectacular trails in the Pacific Northwest. Book your adventure today.">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <meta property="og:title" content="Summit Trail Outfitters — Guided Hiking Tours">
+    <meta property="og:description" content="Small-group guided hiking adventures across the Pacific Northwest.">
+    <meta property="og:type" content="website">
+    <script src="scripts/main.js" defer></script>
 </head>
 
 <body>
@@ -21,6 +22,11 @@
     <header class="site-header">
         <div class="content-wrapper header-inner">
             <a href="index.html" class="site-logo">Summit Trail Outfitters</a>
+            <button class="hamburger-btn" aria-expanded="false" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
             <nav class="site-nav" aria-label="Main navigation">
                 <ul class="nav-links">
                     <li><a href="index.html" aria-current="page">Home</a></li>
@@ -46,43 +52,63 @@
         <section class="featured-tours">
             <div class="content-wrapper">
                 <h2 class="section-heading">Popular Tours</h2>
+                <div class="filter-buttons">
+                    <button class="filter-btn active" data-category="all">All</button>
+                    <button class="filter-btn" data-category="hiking">Hiking</button>
+                    <button class="filter-btn" data-category="walking">Walking</button>
+                </div>
                 <div class="tours-grid">
-                    <article class="tour-card">
+                    <article class="tour-card" data-category="hiking">
+                        <div class="tour-card-image-wrap">
+                            <img class="tour-card-image" src="images/pine-ridge-loop.jpg" alt="Forested trail through cedar and fir trees on the Pine Ridge Loop">
+                        </div>
                         <div class="tour-card-body">
                             <h3 class="tour-card-title">Pine Ridge Loop</h3>
                             <div class="tour-card-meta">
                                 <span class="tour-card-meta-item">4 hours</span>
                                 <span class="tour-card-meta-item">Moderate</span>
                             </div>
-                            <p class="tour-card-description">A classic forest loop with panoramic ridge views and old-growth cedar groves. Suitable for most fitness levels.</p>
+                            <p class="tour-card-description">A classic forest loop with panoramic ridge views and
+                                old-growth cedar groves. Suitable for most fitness levels.</p>
                             <div class="tour-card-cta">
                                 <a href="tours.html" class="btn btn-primary">View Tour</a>
+                                <button class="btn-add-favorite">Add to Favorites</button>
                             </div>
                         </div>
                     </article>
-                    <article class="tour-card">
+                    <article class="tour-card" data-category="hiking">
+                        <div class="tour-card-image-wrap">
+                            <img class="tour-card-image" src="images/river-canyon-trail.jpg" alt="Waterfall cascading through a lush forest canyon on the River Canyon Trail">
+                        </div>
                         <div class="tour-card-body">
                             <h3 class="tour-card-title">River Canyon Trail</h3>
                             <div class="tour-card-meta">
                                 <span class="tour-card-meta-item">6 hours</span>
                                 <span class="tour-card-meta-item">Moderate</span>
                             </div>
-                            <p class="tour-card-description">Follow the canyon rim above the Cascade River with waterfall stops along the way.</p>
+                            <p class="tour-card-description">Follow the canyon rim above the Cascade River with
+                                waterfall stops along the way.</p>
                             <div class="tour-card-cta">
                                 <a href="tours.html" class="btn btn-primary">View Tour</a>
+                                <button class="btn-add-favorite">Add to Favorites</button>
                             </div>
                         </div>
                     </article>
-                    <article class="tour-card">
+                    <article class="tour-card" data-category="hiking">
+                        <div class="tour-card-image-wrap">
+                            <img class="tour-card-image" src="images/summit-challenge.jpg" alt="Panoramic view from a high mountain ridge on the Summit Challenge">
+                        </div>
                         <div class="tour-card-body">
                             <h3 class="tour-card-title">Summit Challenge</h3>
                             <div class="tour-card-meta">
                                 <span class="tour-card-meta-item">Full day</span>
                                 <span class="tour-card-meta-item">Strenuous</span>
                             </div>
-                            <p class="tour-card-description">A demanding ascent to the high ridge — rewarded with one of the best views in the region.</p>
+                            <p class="tour-card-description">A demanding ascent to the high ridge — rewarded with one of
+                                the best views in the region.</p>
                             <div class="tour-card-cta">
                                 <a href="tours.html" class="btn btn-primary">View Tour</a>
+                                <button class="btn-add-favorite">Add to Favorites</button>
                             </div>
                         </div>
                     </article>
@@ -90,10 +116,19 @@
             </div>
         </section>
 
+        <section class="favorites-section section-padding">
+            <div class="content-wrapper">
+                <h2>Your Saved Tours</h2>
+                <ul class="favorites-list"></ul>
+            </div>
+        </section>
+
         <section class="cta-section">
             <div class="content-wrapper">
                 <h2>Who We Are</h2>
-                <p>Founded in 2012, Summit Trail Outfitters has guided thousands of hikers through the most spectacular landscapes in the Pacific Northwest. Safety, sustainability, and an unforgettable experience are at the core of everything we do.</p>
+                <p>Founded in 2012, Summit Trail Outfitters has guided thousands of hikers through the most spectacular
+                    landscapes in the Pacific Northwest. Safety, sustainability, and an unforgettable experience are at
+                    the core of everything we do.</p>
                 <a href="about.html" class="btn btn-accent">Learn More</a>
             </div>
         </section>
@@ -101,7 +136,8 @@
         <section class="section-padding">
             <div class="content-wrapper">
                 <h2>Gear Tips</h2>
-                <p>Pack smart and trail smart. A few essentials make the difference between a good day and a great one.</p>
+                <p>Pack smart and trail smart. A few essentials make the difference between a good day and a great one.
+                </p>
                 <ul>
                     <li>Bring more water than you think you need</li>
                     <li>Wear wool or synthetic — never cotton</li>
@@ -115,13 +151,15 @@
                 <h2>What Our Guests Say</h2>
                 <article>
                     <blockquote>
-                        <p>The Pine Ridge Loop was the highlight of our trip. Our guide knew every plant and bird on the trail.</p>
+                        <p>The Pine Ridge Loop was the highlight of our trip. Our guide knew every plant and bird on the
+                            trail.</p>
                     </blockquote>
                     <p>— Maya R., Portland</p>
                 </article>
                 <article>
                     <blockquote>
-                        <p>I did the Summit Challenge last fall. Hard, but completely worth it. Already booked again for next year.</p>
+                        <p>I did the Summit Challenge last fall. Hard, but completely worth it. Already booked again for
+                            next year.</p>
                     </blockquote>
                     <p>— James T., Seattle</p>
                 </article>

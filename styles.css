@@ -22,6 +22,10 @@ body {
   line-height: 1.6;
 }
 
+body.no-scroll {
+  overflow: hidden;
+}
+
 img,
 picture,
 video,
@@ -67,6 +71,7 @@ ol {
   --color-bg-alt:     #eae4da;  /* slightly darker warm — alternate sections */
   --color-border:     #d8d2c8;  /* warm gray — borders and dividers */
   --color-white:      #ffffff;
+  --color-error:      #b91c1c;  /* red — validation errors, over-limit states */
 
   /* Spacing scale */
   --space-xs:   0.25rem;   /*  4px */
@@ -204,7 +209,10 @@ a:hover {
 
 .header-inner {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
   padding: var(--space-md);
   gap: var(--space-sm);
 }
@@ -269,6 +277,48 @@ a:hover {
 .nav-links a.active {
   color: var(--color-white);
   border-bottom-color: var(--color-accent);
+}
+
+/* === Mobile Nav Toggle === */
+
+.hamburger-btn {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: var(--space-xs);
+}
+
+.hamburger-btn span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background-color: var(--color-bg);
+  border-radius: 2px;
+}
+
+@media (min-width: 768px) {
+  .hamburger-btn {
+    display: none;
+  }
+}
+
+.site-nav {
+  display: none;
+  width: 100%;
+}
+
+.site-nav.nav-open {
+  display: block;
+}
+
+@media (min-width: 768px) {
+  .site-nav {
+    display: block;
+    width: auto;
+  }
 }
 
 /* === Page Header === */
@@ -338,6 +388,33 @@ a:hover {
 .featured-tours {
   background-color: var(--color-bg-alt);
   padding: var(--space-xl) 0;
+}
+
+/* === Filter Buttons === */
+
+.filter-buttons {
+  display: flex;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-md);
+  flex-wrap: wrap;
+}
+
+.filter-btn {
+  padding: var(--space-xs) var(--space-md);
+  border: 2px solid var(--color-primary);
+  background: none;
+  color: var(--color-primary);
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+  background-color: var(--color-primary);
+  color: var(--color-white);
 }
 
 /* === Tours Grid === */
@@ -858,6 +935,18 @@ a:hover {
   resize: vertical;
 }
 
+.char-count {
+  display: block;
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+  margin-top: var(--space-xs);
+}
+
+.char-count.over-limit {
+  color: var(--color-error);
+  font-weight: 600;
+}
+
 .form-group input:focus,
 .form-group textarea:focus,
 .form-group select:focus {
@@ -869,6 +958,28 @@ a:hover {
 .form-submit {
   width: 100%;
   margin-top: var(--space-md);
+}
+
+.field-error {
+  display: block;
+  font-size: 0.875rem;
+  color: var(--color-error);
+  margin-top: var(--space-xs);
+  min-height: 1.25em;
+}
+
+.form-success {
+  display: none;
+  padding: var(--space-md);
+  background-color: var(--color-accent);
+  color: var(--color-primary);
+  border-radius: 4px;
+  margin-top: var(--space-md);
+  font-weight: 600;
+}
+
+.form-success.visible {
+  display: block;
 }
 
 /* === Global form focus fallback === */
@@ -944,4 +1055,100 @@ textarea::placeholder {
   gap: var(--space-md);
   font-size: 0.85rem;
   color: rgba(168, 201, 127, 0.7);
+}
+
+/* === Lightbox === */
+
+.lightbox-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 200;
+}
+
+.lightbox-img {
+  max-width: 90vw;
+  max-height: 85vh;
+  object-fit: contain;
+  border-radius: var(--radius-md);
+}
+
+.lightbox-close {
+  position: absolute;
+  top: var(--space-md);
+  right: var(--space-md);
+  background: rgba(255, 255, 255, 0.15);
+  color: var(--color-white);
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  border-radius: var(--radius-sm);
+  padding: var(--space-xs) var(--space-md);
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: background-color var(--transition-fast);
+}
+
+.lightbox-close:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* === Favorites === */
+
+.btn-add-favorite {
+  margin-top: var(--space-sm);
+  padding: var(--space-xs) var(--space-md);
+  background: none;
+  border: 2px solid var(--color-primary);
+  color: var(--color-primary);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-size: 0.875rem;
+  font-weight: 600;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.btn-add-favorite:hover {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+}
+
+.favorites-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.favorites-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--space-sm) 0;
+  border-bottom: 1px solid var(--color-border);
+  font-weight: 600;
+}
+
+.favorites-empty {
+  color: var(--color-text-muted);
+  font-style: italic;
+  font-weight: 400;
+}
+
+.btn-remove-favorite {
+  padding: var(--space-xs) var(--space-sm);
+  background: none;
+  border: 1px solid var(--color-error);
+  color: var(--color-error);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-size: 0.8rem;
+  font-weight: 600;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.btn-remove-favorite:hover {
+  background-color: var(--color-error);
+  color: var(--color-white);
 }
