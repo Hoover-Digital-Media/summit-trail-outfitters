@@ -1152,3 +1152,73 @@ textarea::placeholder {
   background-color: var(--color-error);
   color: var(--color-white);
 }
+
+/* === Animations === */
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes slideUpFade {
+  0% {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50%       { transform: scale(1.06); }
+}
+
+/* STO Hero Entrance */
+.hero-heading {
+  animation: slideUpFade 600ms ease-out both;
+}
+
+.hero-subheading {
+  animation: slideUpFade 600ms ease-out 150ms both;
+}
+
+.hero-cta {
+  animation: fadeIn 500ms ease-out 300ms both;
+}
+
+/* STO Tour Card Stagger */
+.tours-grid .tour-card {
+  animation: slideUpFade 500ms ease-out both;
+}
+
+.tours-grid .tour-card:nth-child(2) { animation-delay: 100ms; }
+.tours-grid .tour-card:nth-child(3) { animation-delay: 200ms; }
+.tours-grid .tour-card:nth-child(4) { animation-delay: 300ms; }
+.tours-grid .tour-card:nth-child(5) { animation-delay: 400ms; }
+.tours-grid .tour-card:nth-child(6) { animation-delay: 500ms; }
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  .hero-heading,
+  .hero-subheading,
+  .hero-cta {
+    animation: fadeIn 400ms ease-out both;
+  }
+
+  .tours-grid .tour-card,
+  .tours-grid .tour-card:nth-child(2),
+  .tours-grid .tour-card:nth-child(3),
+  .tours-grid .tour-card:nth-child(4),
+  .tours-grid .tour-card:nth-child(5),
+  .tours-grid .tour-card:nth-child(6) {
+    animation: none;
+  }
+
+  .tour-card,
+  .tour-card-image {
+    transition: none;
+  }
+}
